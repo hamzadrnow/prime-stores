@@ -159,11 +159,10 @@ html {
 
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Automatically adjust */
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 1rem;
-  padding: 1rem;
+  margin-top: 1rem;
 }
-
 
 .product-card {
   background: white;
@@ -173,6 +172,7 @@ html {
   text-align: center;
   position: relative;
 }
+
 .product-card img {
   width: 100%;
   max-height: 160px;
