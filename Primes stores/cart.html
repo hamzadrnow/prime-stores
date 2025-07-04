@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Cart - Prime Stores Uganda</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f9f9f9;
+      color: #222;
+    }
+
+    .cart-container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 12px;
+      border: 1px solid #ddd;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    h2, h3 {
+      color: #ff6600;
+      margin-bottom: 16px;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .cart-item button {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .cart-item button:hover {
+      background-color: #0056b3;
+    }
+
+    .total {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #333;
+      margin: 20px 0;
+    }
+
+    .checkout-form input,
+    .checkout-form textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 12px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    .whatsapp-order {
+      background: #ff6600;
+      color: white;
+      padding: 12px 20px;
+      display: inline-block;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .whatsapp-order:hover {
+      background: #e05600;
+    }
+
+@media (max-width: 600px) {
+  .checkout-form input,
+  .checkout-form textarea {
+    width: 100%;
+    font-size: 1rem;
+    padding: 10px;
+  }
+
+  .checkout-form {
+    padding: 10px 0;
+  }
+
+  .whatsapp-order {
+    width: 100%;
+    text-align: center;
+    font-size: 1rem;
+    padding: 12px;
+    margin-top: 10px;
+  }
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-container">
+      <img src="images/logo.png" alt="Prime Stores Logo" class="logo">
+      <div class="site-title">
+        <h1>Prime Stores Uganda</h1>
+        <p>Your Smart Gadget Shop in Kampala</p>
+      </div>
+      <a href="https://wa.me/256789599920" class="whatsapp-button">Chat on WhatsApp</a>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav class="main-nav">
+    <ul>
+      <li><a href="#phones">Phones</a></li>
+      <li><a href="#wearables">Wearables</a></li>
+      <li><a href="#smarttech">Smart Tech</a></li>
+      <li><a href="#audio">Audio</a></li>
+      <li><a href="#tv">TVs</a></li>
+      <li><a href="#kitchen">Kitchen</a></li>
+      <li><a href="#blog">Blog</a></li>
+    </ul>
+  </nav>
+
+
+  <div class="cart-container">
+    <h2>Your Shopping Cart</h2>
+    <div id="cart-items"></div>
+    <div class="total" id="cart-total">Total: UGX 0</div>
+
+    <h3>Checkout Details</h3>
+    <form id="checkout-form" class="checkout-form">
+      <input type="text" id="cust-name" placeholder="Your Name" required />
+      <input type="tel" id="cust-phone" placeholder="Phone Number" required />
+      <textarea id="cust-address" placeholder="Delivery Address" required></textarea>
+      <a href="#" id="whatsapp-link" class="whatsapp-order" target="_blank">Place Order via WhatsApp</a>
+    </form>
+  </div>
+
+  <script>
+    const cartItemsDiv = document.getElementById('cart-items');
+    const cartTotal = document.getElementById('cart-total');
+    const whatsappLink = document.getElementById('whatsapp-link');
+    const formInputs = document.querySelectorAll('#checkout-form input, #checkout-form textarea');
+
+    function loadCart() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cartItemsDiv.innerHTML = '';
+      let total = 0;
+
+      if (cart.length === 0) {
+        cartItemsDiv.innerHTML = '<p>Your cart is empty.</p>';
+        whatsappLink.style.display = 'none';
+        return;
+      }
+
+      cart.forEach((item, index) => {
+        const itemDiv = document.createElement('div');
+        itemDiv.className = 'cart-item';
+        itemDiv.innerHTML = `
+          <span>${item.name} (x${item.qty}) - UGX ${item.price * item.qty}</span>
+          <button onclick="removeFromCart(${index})">Remove</button>
+        `;
+        cartItemsDiv.appendChild(itemDiv);
+        total += item.price * item.qty;
+      });
+
+      cartTotal.textContent = 'Total: UGX ' + total.toLocaleString();
+      whatsappLink.style.display = 'inline-block';
+    }
+
+    function removeFromCart(index) {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.splice(index, 1);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      loadCart();
+      updateWhatsAppLink(); // Update message in case item count changes
+    }
+
+    function updateWhatsAppLink() {
+      const name = document.getElementById('cust-name').value.trim();
+      const phone = document.getElementById('cust-phone').value.trim();
+      const address = document.getElementById('cust-address').value.trim();
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+      if (!name || !phone || !address || cart.length === 0) {
+        whatsappLink.href = '#';
+        return;
+      }
+
+      let message = `Hello Prime Stores,%0AI would like to place an order:%0A`;
+      cart.forEach(item => {
+        message += `- ${item.name} x${item.qty} = UGX ${item.price * item.qty}%0A`;
+      });
+      let total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+      message += `Total: UGX ${total}%0A`;
+      message += `Name: ${name}%0APhone: ${phone}%0AAddress: ${address}`;
+
+      whatsappLink.href = `https://wa.me/256789599920?text=${encodeURIComponent(message)}`;
+    }
+
+    function clearCartAfterOrder() {
+      localStorage.removeItem('cart');
+      loadCart();
+      alert("Thank you! Your order has been placed.");
+    }
+
+    // Load cart on page load
+    loadCart();
+
+    // Update WhatsApp link on any input
+    formInputs.forEach(input => input.addEventListener('input', updateWhatsAppLink));
+
+    // Clear cart after clicking order link
+    whatsappLink.addEventListener('click', () => {
+      if (whatsappLink.href !== '#') {
+        setTimeout(clearCartAfterOrder, 2000); // delay to allow WhatsApp to open
+      }
+    });
+  </script>
+</body>
+</html>

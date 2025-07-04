@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prime Stores</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="scripts.js"></script>
+<style>
+/* Header */
+.site-header {
+  background-color: orange;
+  padding: 1rem 0;
+  color: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Center the entire header content */
+.container.header-container {
+  max-width: 1100px;
+  margin: 0 auto; /* Centers horizontally */
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center; /* Ensures inner items are centered */
+  text-align: center; /* Optional: Center text inside h1/p */
+}
+
+/* Wrap logo + title side by side */
+.logo-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Logo styles */
+.logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: white;
+  padding: 4px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+/* Title text */
+.site-title h1 {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.site-title p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* WhatsApp & Cart Buttons */
+.whatsapp-button {
+  display: inline-block;
+  padding: 0.3rem 0.5rem;
+  font-size: 0.6rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+  background-color: #1e88e5;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  max-width: fit-content; 
+}
+
+.whatsapp-button {
+  max-width: 120px;
+}
+.whatsapp-button {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+/* Live search */
+.live-search-container {
+  width: 100%;
+  padding: 0 1rem;
+}
+
+/* Search input box */
+#liveSearchInput {
+  width: 100%;
+  padding: 0.3rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  border: 1px solid #ccc;
+}
+/* Ensure side-by-side stays on small screens */
+@media (max-width: 768px) {
+  .header-container {
+    align-items: flex-start;
+  }
+
+  .logo-title-wrap {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+
+  .whatsapp-button {
+    max-width: 180px;
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* Container holding search + buttons */
+.header-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* Search container size */
+.live-search-container {
+  flex: 1;
+  max-width: 160px;
+  margin: 0;
+  font-size:0.6rem;
+  padding: 0.4rem;
+}
+
+/* Search input box */
+#liveSearchInput {
+  width: 100%;
+  padding: 0.3rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  border: 1px solid #ccc;
+}
+
+@media (max-width: 480px) {
+  .live-search-container,
+  .whatsapp-button {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+
+  .live-search-container {
+    flex: 1 1 50%;
+    max-width: 140px;
+  }
+
+  .whatsapp-button {
+    flex: 0 0 auto;
+    padding: 0.3rem 0.5rem;
+    font-size: 0.7rem;
+    max-width: fit-content;
+  }
+}
+
+
+/* Optional: Adjust spacing below the header */
+.site-header {
+  margin-bottom: 0.5rem;
+}
+</style>
+
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-container">
+    <!-- Logo + Title -->
+    <div class="logo-title-wrap">
+      <img src="images/logo.png" alt="Prime Stores Logo" class="logo">
+      <div class="site-title">
+        <h1>Prime Stores Uganda</h1>
+        <p>Your Smart Gadget Shop in Kampala</p>
+      </div>
+    </div>
+
+<div class="header-actions">
+  <a href="https://wa.me/256789599920" class="whatsapp-button">Whatsapp Chat</a>
+  <a href="cart.html" class="whatsapp-button">🛒 View Cart</a>
+    <div class="live-search-container">
+    <input type="text" id="liveSearchInput" placeholder="🔍 Search for products..." />
+    <div id="searchResults" class="search-results"></div>
+  </div>
+</div>
+
+  </header>
+  <!-- Kitchen Section -->
+  <section id="kitchen" class="product-section">
+    <h2>🍳 Kitchen & Home appliances </h2>
+    <a href="page2.html" class="view-all-btn">View All</a>
+    <div class="product-grid">
+        <div class="product-card">
+        <img src="images/blend14.jpg" alt="parcolator">
+        <h3>Flat Iron, Percolator & Extension</h3>
+        <span>UGX 98,000</span>
+        <p class="short-desc" onclick="this.classList.toggle('expanded')">This package comes with two household items: The premium stylish stainless steel kettle fits perfectly in any kitchen thanks to its unique modern design and a flat iron is stainless, non stick to keep your clothes clean and neat.</p>
+        <button class="add-to-cart" data-name="Flat Iron, Percolator & Extension" data-price="98000">Add to Cart</button>
+      </div>  
+        <div class="product-card">
+        <img src="images/blend9.jpg" alt="flat iron">
+        <h3>Saachi Modern Dry Iron-Silver </h3>
+        <span>UGX 66,000</span>
+        <p class="short-desc" onclick="this.classList.toggle('expanded')">modern dry iron suitable for everyday use. it is of very good quality and made with an aluminium.</p>
+        <button class="add-to-cart" data-name="Saachi Modern Dry Iron-Silver" data-price=66000">Add to Cart</button>
+      </div>  
+
+          <div class="product-card">
+        <img src="images/blend12.jpg" alt="flat iron">
+        <h3>Flat Iron & Power King Extension</h3>
+        <span>UGX 65,000</span>
+        <p class="short-desc" onclick="this.classList.toggle('expanded')">This package comes with two very essential household items :  The flat iron is stainless, non stick to keep your clothes clean and neatThe Power king extension cable is 3M in length and of great quality for various home applications.</p>
+        <button class="add-to-cart" data-name="Flat Iron & Power King Extension" data-price="65000">Add to Cart</button>
+      </div>  
+
+        <div class="product-card">
+        <img src="images/blend11.jpg" alt="steam iron">
+        <h3>SPJ Steam Iron</h3>
+        <span>UGX 54,000</span>
+        <p class="short-desc" onclick="this.classList.toggle('expanded')">SPJ Steam Iron 220 ML With Non-Stick Soleplate, 2 Steam Settings, Thermostat Control, 1.8 M Cord, 1200W - White And Purple.</p>
+        <button class="add-to-cart" data-name="SPJ Steam Iron" data-price="54000">Add to Cart</button>
+      </div>  
+
+        <div class="product-card">
+        <img src="images/blend10.jpg" alt="scarlet iron">
+        <h3>Scarlett England Steam & Dry Iron</h3>
+        <span>UGX 48,000</span>
+        <p class="short-desc" onclick="this.classList.toggle('expanded')">The scarlet steam iron effectively removes creases and leaves clothes looking sharp. It is equipped with a non-stick soleplate and an easy-to-use temperature control dial.</p>
+        <button class="add-to-cart" data-name="Scarlett England Steam & Dry Iron" data-price="48000">Add to Cart</button>
+      </div>  
+
+        <div class="product-card">
+        <img src="images/blend8.jpg" alt="E. kettle">
+        <h3>Scarlet Electric Percolator</h3>
+        <span>UGX 34,000</span>
+        <p class="short-desc" onclick="this.classList.toggle('expanded')">The electric kettle has a 2Litres plus other amazing features such as an automatic shutdown, water level indicator which lets you adjust the amount of water placed in the teapot.</p>
+        <button class="add-to-cart" data-name="Scarlet Electric Percolator"data-price="34000">Add to Cart</button>
+      </div>  
+
+        <div class="product-card">
+        <img src="images/blend5.jpg" alt="E. kettle">
+        <h3>Hoffmans 2L Glass Electric Kettle</h3>
+        <span>UGX 59,000</span>
+        <p class="short-desc" onclick="this.classList.toggle('expanded')"> looks great and makes boiling water a breeze – perfect for home.</p>
+        <button class="add-to-cart" data-name="Hoffmans 2L Glass Electric Kettle" data-price="59000">Add to Cart</button>
+      </div>  
+
+        <div class="product-card">
+        <img src="images/blend7.jpg" alt="E. kettle">
+        <h3>Saachi 1.8L Sleek Electric Kettle</h3>
+        <span>UGX 71,000</span>
+        <p class="short-desc" onclick="this.classList.toggle('expanded')">Double Wall NL-KT-7774-WH With Boil Dry Protection & Auto-Shut Off ? Cream– perfect for home.</p>
+        <button class="add-to-cart" data-name="Saachi 1.8L Sleek Electric Kettle" data-price="71000">Add to Cart</button>
+      </div>  
+
+        <div class="product-card">
+        <img src="images/phone6.jpg" alt="phone">
+        <h3>Redmi 14C</h3>
+        <span>UGX 455,000</span>
+        <p class="short-desc" onclick="this.classList.toggle('expanded')">6.88" 8GB/256GB ROM 50MP 5160mAh Black.</p>
+        <button class="add-to-cart" data-name="Redmi 14C" data-price="455000">Add to Cart</button>
+      </div>
+
+        <div class="product-card">
+        <img src="images/phone10.jpg" alt="Itel A80">
+        <h3>Itel A80</h3>
+        <span>UGX 345,000</span>
+        <p class="short-desc" onclick="this.classList.toggle('expanded')"6.7" 8GB (3+5GB virtual 128GB ROM 5000mAh).</p>
+        <button class="add-to-cart" data-name="Itel A80" data-price="345000">Add to Cart</button>
+      </div>
+
+        <div class="product-card">
+        <img src="images/phone14.jpg" alt="phone">
+        <h3>ZTE Nubia Blade A35</h3>
+        <span>UGX 315,000</span>
+        <p class="short-desc" onclick="this.classList.toggle('expanded')">6.75" 12GB RAM 64GB ROM 5000mAh with a face recognition- Black.</p>
+        <button class="add-to-cart" data-name="ZTE Nubia Blade A35" data-price="315000">Add to Cart</button>
+      </div>
+
+        <div class="product-card">
+        <img src="images/phone16.jpg" alt="smart phone">
+        <h3>Sumsang Galaxy S22 ultra 5G </h3>
+        <span>UGX 1,850,000</span>
+        <p class="short-desc" onclick="this.classList.toggle('expanded')">6.8" 8GB RAM 256GB ROM 108MP</p>
+        <button class="add-to-cart" data-name="Sumsang Galaxy S22 ultra 5G " data-price="1850000">Add to Cart</button>
+      </div>
+
+        <div class="product-card">
+        <img src="images/phone15.jpg" alt="phone">
+        <h3>ZTE Blade A35 core</h3>
+        <span>UGX 200,000</span>
+        <p class="short-desc" onclick="this.classList.toggle('expanded')">5" 4GB RAM, 32GB Storage, 2000mAh Battery Face reognition .</p>
+        <button class="add-to-cart" data-name="ZTE Blade A35 core" data-price="200000">Add to Cart</button>
+      </div>
+ 
+        <div class="product-card">
+        <img src="images/phone17.jpg" alt="phone">
+        <h3>Tecno Camon 30</h3>
+        <span>UGX 780,000</span>
+        <p class="short-desc" onclick="this.classList.toggle('expanded')">6.78" 8GB RAM 256GB ROM 50MP 5000mAh- white</p>
+        <button class="add-to-cart" data-name="Tecno Camon 30" data-price="780000">Add to Cart</button>
+      </div>
+
+        <div class="product-card">
+        <img src="images/phone18.jpg" alt="phone">
+        <h3>SIMI C1 4G</h3>
+        <span>UGX 299,000</span>
+        <p class="short-desc" onclick="this.classList.toggle('expanded')">Qualcomm Snapdragon 710 , 6.3" INCELL HD+ Display, 6GB RAM + 64GB Storage, 20MP+8MP Dual Rear Camera, 13MP Front Camera, 4000mAh Battery, 18W Fast Charger, Complete Accessory Package - Blue</p>
+        <button class="add-to-cart" data-name="SIMI C1 4G" data-price="299000">Add to Cart</button>
+      </div>
+  
+        <div class="product-card">
+        <img src="images/phone19.jpg" alt="phone">
+        <h3>Oale S24+</h3>
+        <span>UGX 219,000</span>
+        <p class="short-desc" onclick="this.classList.toggle('expanded')">6.52" 32GB ROM 3GB RAM 8MP 4050mAh 3G - Amber Yellow (Gold).</p>
+        <button class="add-to-cart" data-name="Oale S24+" data-price="219000">Add to Cart</button>
+      </div>
+
+        <div class="product-card">
+        <img src="images/phone20.jpg" alt="phone">
+        <h3>Redmi A3x</h3>
+        <span>UGX 320,000</span>
+        <p class="short-desc" onclick="this.classList.toggle('expanded')">6.71" 3GB RAM 64GB ROM 8MP 5000mAh - Black</p>
+        <button class="add-to-cart" data-name="Redmi A3x" data-price="320000">Add to Cart</button>
+      </div>
+
+        <div class="product-card">
+        <img src="images/phone22.jpg" alt="phone">
+        <h3>Bebe TAB B42 Pro+ / B42 Pro Plus/ B42pro+</h3>
+        <span>UGX 185,000</span>
+        <p class="short-desc" onclick="this.classList.toggle('expanded')">128 GB ROM 4GB RAM 7" Inch Display Kids Learning And Games Tablet- Color May V*ry</p>
+        <button class="add-to-cart" data-name="Bebe TAB B42 Pro+ / B42 Pro Plus/ B42pro+" data-price="185000">Add to Cart</button>
+      </div>
+
+          <div class="product-card">
+        <img src="images/hoofer2.jpg" alt="hoofer">
+        <h3>Global Star Bluetooth Speaker</h3>
+        <span>UGX 219,000</span>
+        <p class="short-desc" onclick="this.classList.toggle('expanded')">Home Speaker GS-8912 2.1 Home Multispeaker System</p>
+        <button class="add-to-cart" data-name="Global Star Bluetooth Speaker" data-price="219000">Add to Cart</button>
+      </div>
+
+          <div class="product-card">
+        <img src="images/hoofer8.jpg" alt="hoofer">
+        <h3>Sound Bar Speaker</h3>
+        <span>UGX 250,000</span>
+        <p class="short-desc" onclick="this.classList.toggle('expanded')">System Channel Hifi Enabled Speakers - Black.</p>
+        <button class="add-to-cart" data-name="Sound Bar Speaker" data-price="250000">Add to Cart</button>
+      </div>
+
+          <div class="product-card">
+        <img src="images/hoofer10.jpg" alt="hoofer">
+        <h3>Hisense Party Rocker </h3>
+        <span>UGX 939,000</span>
+        <p class="short-desc" onclick="this.classList.toggle('expanded')">Wireless Outdoor / Indoor Party Speaker With Subwoofer Black.</p>
+        <button class="add-to-cart" data-name="Hisense Party Rocker" data-price="939000">Add to Cart</button>
+      </div>
+
+          <div class="product-card">
+        <img src="images/hoofer11.jpg" alt="hoofer">
+        <h3>AILIPU Party Bass</h3>
+        <span>UGX 215,000</span>
+        <p class="short-desc" onclick="this.classList.toggle('expanded')">Bluetooth Rechargeable Speaker With In-Built Microphone – Black.</p>
+        <button class="add-to-cart" data-name="AILIPU Party Bass" data-price="215000">Add to Cart</button>
+      </div>
+
+          <div class="product-card">
+        <img src="images/hoofer12.jpg" alt="hoofer">
+        <h3>Super Bass</h3>
+        <span>UGX 750,000</span>
+        <p class="short-desc" onclick="this.classList.toggle('expanded')">5 Speakers Home Theatre System-Black</p>
+        <button class="add-to-cart" data-name="Super Bass" data-price="750000">Add to Cart</button>
+      </div>
+
+          <div class="product-card">
+        <img src="images/hoofer13.jpg" alt="hoofer">
+        <h3>USB speakers</h3>
+        <span>UGX 35,000</span>
+        <p class="short-desc" onclick="this.classList.toggle('expanded')">USB Computer Phone, Laptop Speakers.</p>
+        <button class="add-to-cart" data-name="USB speakers" data-price="35000">Add to Cart</button>
+      </div>
+
+          <div class="product-card">
+        <img src="images/hoofer14.jpg" alt="hoofer">
+        <h3>Sound Bar</h3>
+        <span>UGX 95,000</span>
+        <p class="short-desc" onclick="this.classList.toggle('expanded')">Bluetooth Wireless Speaker Sound Bar Home Theatre/Color Varies -Multicolour.</p>
+        <button class="add-to-cart" data-name="Sound Bar" data-price="95000">Add to Cart</button>
+      </div>
+
+          <div class="product-card">
+        <img src="images/hoofer3.jpg" alt="phone">
+        <h3>Global Star Bluetooth Speaker</h3>
+        <span>UGX 299,000</span>
+        <p class="short-desc" onclick="this.classList.toggle('expanded')">Home Speaker 3.1 Home Multispeaker GS-2113 System 100watts</p>
+        <button class="add-to-cart" data-name="Global Star Bluetooth Speaker" data-price="299000">Add to Cart</button>
+      </div>
+
+          <div class="product-card">
+        <img src="images/bud2.jpg" alt="earbud">
+        <h3>Lenovo XT61</h3>
+        <span>UGX 75,000</span>
+        <p class="short-desc" onclick="this.classList.toggle('expanded')">Bluetooth 5.3 Earbuds Clip Ear Earphones Headset.</p>
+        <button class="add-to-cart" data-name="Lenovo XT61" data-price="75000">Add to Cart</button>
+      </div>
+
+          <div class="product-card">
+        <img src="images/bud4.jpg" alt="earbud">
+        <h3>P47 Headsets</h3>
+        <span>UGX 35,000</span>
+        <p class="short-desc" onclick="this.classList.toggle('expanded')">P47 Bluetooth Wireless Bass Headsets With FM And Memory Card Slot - Black,White.</p>
+        <button class="add-to-cart" data-name="P47 Headsets" data-price="35000">Add to Cart</button>
+      </div>
+
+            <div class="product-card">
+        <img src="images/bud8.jpg" alt="earbud">
+        <h3>Levono Wireless Headphones</h3>
+        <span>UGX 70,000</span>
+        <p class="short-desc" onclick="this.classList.toggle('expanded')">Lenovo TA410 BT5.4 True Wireless Headphones With Mic.</p>
+        <button class="add-to-cart" data-name="Levono Wireless Headphones" data-price="70000">Add to Cart</button>
+      </div>
+
+            <div class="product-card">
+        <img src="images/bud10.jpg" alt="earbud">
+        <h3>smart watch</h3>
+        <span>UGX 95,000</span>
+        <p class="short-desc" onclick="this.classList.toggle('expanded')">Multi Functional Bluetooth Call Smartwatch.</p>
+        <button class="add-to-cart" data-name="smart watch" data-price="95000">Add to Cart</button>
+      </div>
+
+              <div class="product-card">
+        <img src="images/bud1.jpg" alt="earbud">
+        <h3>Over the Ear -Multicolor headphones</h3>
+        <span>UGX 40,000</span>
+        <p class="short-desc" onclick="this.classList.toggle('expanded')">Bass Wireless Bluetooth Headphones Over The Ear - Blue/Black/Red.</p>
+        <button class="add-to-cart" data-name="Over the Ear -Multicolor headphones" data-price="40000">Add to Cart</button>
+      </div>
+
+               <div class="product-card">
+        <img src="images/bud14.jpg" alt="earbud">
+        <h3>Smart watch</h3>
+        <span>UGX 40,000</span>
+        <p class="short-desc" onclick="this.classList.toggle('expanded')">Smart Watch Waterproof -Black.</p>
+        <button class="add-to-cart" data-name="Smart watch" data-price="40000">Add to Cart</button>
+      </div>
+
+  
+               <div class="product-card">
+        <img src="images/bud13.jpg" alt="earbud">
+        <h3>Smart watch</h3>
+        <span>UGX 60,000</span>
+        <p class="short-desc" onclick="this.classList.toggle('expanded')">Women Watch Men Smart Watches Sports Fintess Watches.</p>
+        <button class="add-to-cart" data-name="Smart watch" data-price="60000">Add to Cart</button>
+      </div>
+
+   
+             <div class="product-card">
+        <img src="images/bud11.jpg" alt="earbud">
+        <h3>2.09 Smart watch</h3>
+        <span>UGX 80,000</span>
+        <p class="short-desc" onclick="this.classList.toggle('expanded')">2.09 Smart Watch Full Touchscreen - Business Black Steelbelt.</p>
+        <button class="add-to-cart" data-name="2.09 Smart watch" data-price="80000">Add to Cart</button>
+      </div>
+
+              <div class="product-card">
+        <img src="images/tv5.jpg" alt="TV">
+        <h3>Hikers 43" Frameless LED TV</h3>
+        <span>UGX 525,000</span>
+        <p class="short-desc" onclick="this.classList.toggle('expanded')">Key Features
+FRAMELESS Digital LED TV
+DVBT2
+Eyes Protection
+Easy To Carry
+Full screen brings wide vision
+Dream With Hikers
+Love Your Love
+HDMI USB Game
+Energy Saving</p>
+        <button class="add-to-cart" data-name="Hikers 43" Frameless LED TV" data-price="525000">Add to Cart</button>
+      </div>
+
+             <div class="product-card">
+        <img src="images/tv6.jpg" alt="TV">
+        <h3>Global Star 40" HD TV</h3>
+        <span>UGX 498,000</span>
+        <p class="short-desc" onclick="this.classList.toggle('expanded')">Key Features
+Screen Size: 40 inch 
+Type: LEDConnectivity: 
+QLED
+headphones, 
+USB2, 
+HDMI 2,
+VGA 1
+FULL HD 1080P
+Frameless Digital TVBuilt-in decoder
+Clean view
+Wide Color Enhancer</p>
+        <button class="add-to-cart" data-name="Global Star 40" HD TV" data-price="498000">Add to Cart</button>
+      </div>
+  </section>
+      <div style="text-align: center; margin: 2rem 0;">
+    <a href="index.html" style="
+      display: inline-block;
+      background-color: #1e88e5;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      font-weight: bold;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 1.1rem;
+    ">Back to page 1</a>
+  </div>
+  <footer>
+    &copy; 2025 Prime Electronics Uganda | <a href="https://wa.me/256789599920">Contact on WhatsApp</a></p>
+  </footer>
+
+</body>
+</html>
