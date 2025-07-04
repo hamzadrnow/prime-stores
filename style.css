@@ -9,6 +9,14 @@ body {
   overflow-x: hidden;
 }
 
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Automatically adjust */
+  gap: 1rem;
+  padding: 1rem;
+}
+
+
 /* Optional: Also ensure html doesn't allow it */
 html {
   overflow-x: hidden;
