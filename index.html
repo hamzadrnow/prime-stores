@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prime Stores</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="scripts.js"></script>
+<style>
+/* Header */
+.site-header {
+  background-color: orange;
+  padding: 1rem 0;
+  color: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Center the entire header content */
+.container.header-container {
+  max-width: 1100px;
+  margin: 0 auto; /* Centers horizontally */
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center; /* Ensures inner items are centered */
+  text-align: center; /* Optional: Center text inside h1/p */
+}
+
+/* Wrap logo + title side by side */
+.logo-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Logo styles */
+.logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: white;
+  padding: 4px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+/* Title text */
+.site-title h1 {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.site-title p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* WhatsApp & Cart Buttons */
+.whatsapp-button {
+  display: inline-block;
+  padding: 0.3rem 0.5rem;
+  font-size: 0.6rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+  background-color: #1e88e5;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  max-width: fit-content; 
+}
+
+.whatsapp-button {
+  max-width: 120px;
+}
+.whatsapp-button {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+/* Live search */
+.live-search-container {
+  width: 100%;
+  padding: 0 1rem;
+}
+
+/* Search input box */
+#liveSearchInput {
+  width: 100%;
+  padding: 0.3rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  border: 1px solid #ccc;
+}
+/* Ensure side-by-side stays on small screens */
+@media (max-width: 768px) {
+  .header-container {
+    align-items: flex-start;
+  }
+
+  .logo-title-wrap {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+
+  .whatsapp-button {
+    max-width: 180px;
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* Container holding search + buttons */
+.header-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* Search container size */
+.live-search-container {
+  flex: 1;
+  max-width: 160px;
+  margin: 0;
+  font-size:0.6rem;
+  padding: 0.4rem;
+}
+
+/* Search input box */
+#liveSearchInput {
+  width: 100%;
+  padding: 0.3rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  border: 1px solid #ccc;
+}
+
+@media (max-width: 480px) {
+  .live-search-container,
+  .whatsapp-button {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+
+  .live-search-container {
+    flex: 1 1 50%;
+    max-width: 140px;
+  }
+
+  .whatsapp-button {
+    flex: 0 0 auto;
+    padding: 0.3rem 0.5rem;
+    font-size: 0.7rem;
+    max-width: fit-content;
+  }
+}
+
+
+/* Optional: Adjust spacing below the header */
+.site-header {
+  margin-bottom: 0.5rem;
+}
+</style>
+
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-container">
+    <!-- Logo + Title -->
+    <div class="logo-title-wrap">
+      <img src="images/logo.png" alt="Prime Stores Logo" class="logo">
+      <div class="site-title">
+        <h1>Prime Stores Uganda</h1>
+        <p>Your Smart Gadget Shop in Kampala</p>
+      </div>
+    </div>
+
+<div class="header-actions">
+  <a href="https://wa.me/256789599920" class="whatsapp-button">Whatsapp Chat</a>
+  <a href="cart.html" class="whatsapp-button">🛒 View Cart</a>
+    <div class="live-search-container">
+    <input type="text" id="liveSearchInput" placeholder="🔍 Search for products..." />
+    <div id="searchResults" class="search-results"></div>
+  </div>
+</div>
+
+  </header>
+
+  <!-- Navigation -->
+  <nav class="main-nav">
+    <ul>
+      <li><a href="#phones">Phones</a></li>
+      <li><a href="#wearables">Wearables</a></li>
+      <li><a href="#smarttech">Smart Tech</a></li>
+      <li><a href="#audio">Audio</a></li>
+      <li><a href="#tv">TVs</a></li>
+      <li><a href="#kitchen">Kitchen</a></li>
+      <li><a href="#blog">Blog</a></li>
+    </ul>
+  </nav>
+
+<section id="phones" class="product-section">
+  <div class="section-header">
+    <h2>📱 Phones & Accessories</h2>
+    <a href="page2.html" class="view-all-btn">View All</a>
+  </div>
+
+  <div class="product-grid container">
+    <div class="product-card">
+      <img src="images/phone1.jpg" alt="Samsung A05">
+      <h3>Samsung Galaxy A05</h3>
+      <span>UGX 340,000</span>
+<p class="short-desc" onclick="this.classList.toggle('expanded')">6.7" 4GB RAM 64GB ROM 50MP 5000mAh, delivery East and central.</p>
+      <button class="add-to-cart" data-name="Samsung A05" data-price="340000">Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/phone4.jpg" alt="Infinix smart 7 plus">
+      <h3>Infinix smart 7 plusC</h3>
+      <span>UGX 365,000</span>
+      <p class="short-desc" onclick="this.classList.toggle('expanded')">6.6" 4GB RAM/64GB ROM. Android 12, delivery. Sleek and durable.</p>
+      <button class="add-to-cart" data-name="Infinix smart 7 plus" data-price="365000">Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/phone3.jpg" alt="Samsung Galaxy A06">
+      <h3>Samsung Galaxy A06</h3>
+      <span>UGX 390,000</span>
+            <p class="short-desc" onclick="this.classList.toggle('expanded')">Dual SIM, 4GB RAM 64GB ROM. Affordable and fast – Kampala, Mbale.</p>
+      <button class="add-to-cart" data-name="Samsung Galaxy A06" data-price="390000">Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/phone5.jpg" alt="Itel Awesome A70">
+      <h3>Itel Awesome A70</h3>
+      <span>UGX 330,000</span>
+            <p class="short-desc" onclick="this.classList.toggle('expanded')">6.6" 8GB/128 ROM 13MP, 5000mAh. Smooth and reliable.</p>
+      <button class="add-to-cart" data-name="Itel Awesome A70" data-price="330000">Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/phone11.jpg" alt="Oale IP15 PLUS">
+      <h3>Oale IP15 PLUS</h3>
+      <span>UGX 250,000</span>
+            <p class="short-desc" onclick="this.classList.toggle('expanded')">6.52" 3GB RAM 32GB ROM 8MP 4050mAh.. Great camera.</p>
+      <button class="add-to-cart" data-name="Oale IP15 PLUS" data-price="250000">Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/phone12.jpg" alt="Oale A75">
+      <h3>Oale A75</h3>
+      <span>UGX 220,000</span>
+            <p class="short-desc" onclick="this.classList.toggle('expanded')">5.52" 3GB RAM 32GB ROM 8MP 3050mAh- Black. Popular budget phone.</p>
+      <button class="add-to-cart" data-name="Oale A75" data-price="220000">Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/phone21.jpg" alt="Mbo I15 PRO MAX 3G">
+      <h3>Mbo I15 PRO MAX 3G</h3>
+      <span>UGX 244,000</span>
+            <p class="short-desc" onclick="this.classList.toggle('expanded')">6.82"HD+ (3GB RAM + 32GB ROM), 13MP, 5000mAh - Black. Long-lasting power.</p>
+      <button class="add-to-cart" data-name="Mbo I15 PRO MAX 3G" data-price="244000">Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/phone9.jpg" alt="Redmi 13C">
+      <h3>Redmi 13C</h3>
+      <span>UGX 360,000</span>
+            <p class="short-desc" onclick="this.classList.toggle('expanded')">6.74" 8GB RAM 128GB ROM 50MP 5000mAh.</p>
+      <button class="add-to-cart" data-name="Redmi 13C" data-price="360000">Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/phone7.jpg" alt="Tecno spark 30C">
+      <h3>Tecno spark 30C</h3>
+      <span>UGX 430,000</span>
+            <p class="short-desc" onclick="this.classList.toggle('expanded')">6.67" 8GB RAM 128GB ROM 50MP 5000mAh orbit white.</p>
+      <button class="add-to-cart" data-name="Tecno spark 30C" data-price="430000">Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/phone13.jpg" alt="Infinix smart 8">
+      <h3>Infinix smart 8</h3>
+      <span>UGX 335,000</span>
+            <p class="short-desc" onclick="this.classList.toggle('expanded')">5.52" 2GB RAM 64GB ROM 13MP 5000mAh- Black.</p>
+      <button class="add-to-cart" data-name="Infinix smart 8" data-price="335000">Add to Cart</button>
+    </div>
+
+  </div>
+</section>
+
+
+
+  <!-- Audio Section -->
+  <section id="audio" class="product-section">
+    <h2>🔊 Audio Devices</h2>
+    <a href="page2.html" class="view-all-btn">View All</a>
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="images/hoofer1.jpg" alt="Sayona Hoofer">
+        <h3>Global Star Bluetooth Speaker</h3>
+        <span>UGX 390,000</span>
+        <p class="short-desc" onclick="this.classList.toggle('expanded')">Home Speaker Pro 4.1 Home Multispeaker System. – Powerful bass output.</p>
+        <button class="add-to-cart" data-name="Global Star" data-price="390000">Add to Cart</button>
+      </div>
+
+      <div class="product-card">
+        <img src="images/hoofer7.jpg" alt="GS home theatre">
+        <h3>Global Star home threatre</h3>
+        <span>UGX 410,000</span>
+        <p class="short-desc" onclick="this.classList.toggle('expanded')">Bluetooth Speaker Home Speakers GS-2026 4.1 Multispeaker System.</p>
+        <button class="add-to-cart" data-name="GS home theatre" data-price="410000">Add to Cart</button>
+      </div>
+
+     <div class="product-card">
+        <img src="images/hoofer5.jpg" alt="Sayona Hoofer">
+        <h3>Saachi 3.1 CH</h3>
+        <span>UGX 160,000</span>
+        <p class="short-desc" onclick="this.classList.toggle('expanded')">Home Audio System / Sub Woofer / Multimedia speaker.</p>
+        <button class="add-to-cart" data-name="Saachi 3.1 hoofer" data-price="160000">Add to Cart</button>
+      </div>
+
+
+     <div class="product-card">
+        <img src="images/hoofer6.jpg" alt="Sayona Hoofer">
+        <h3>Djack 3.1CH</h3>
+        <span>UGX 170,000</span>
+        <p class="short-desc" onclick="this.classList.toggle('expanded')">Bluetooth Speaker System woofer 903 - Black.</p>
+        <button class="add-to-cart" data-name="Djack 3.1CH" data-price="170000">Add to Cart</button>
+      </div>
+
+     <div class="product-card">
+        <img src="images/hoofer4.jpg" alt="Sayona Hoofer">
+        <h3>Saachi 2.1 channel</h3>
+        <span>UGX130,000</span>
+        <p class="short-desc" onclick="this.classList.toggle('expanded')">3.1CH Woofer with Bluetooth/FM/USB/Remote – Powerful bass output.</p>
+        <button class="add-to-cart" data-name="Saachi 2.1 hoofer" data-price="140000">Add to Cart</button>
+      </div>
+
+      <div class="product-card">
+        <img src="images/hoofer9.jpg" alt="party bass">
+        <h3>Party Bass Speaker</h3>
+        <span>UGX 150,000</span>
+               <p class="short-desc" onclick="this.classList.toggle('expanded')"> long battery life, high-quality sound – Stylish and compact.</p>
+        <button class="add-to-cart" data-name="Party Bass Speaker" data-price="150000">Add to Cart</button>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Wearables Section -->
+  <section id="wearables" class="product-section">
+    <h2>⌚ Wearables</h2>
+    <a href="page2.html" class="view-all-btn">View All</a>
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="images/bud12.jpg" alt="2.09 Smart watch">
+        <h3>2.09 Smart watch</h3>
+        <span>UGX 65,000</span>
+        <p class="short-desc" onclick="this.classList.toggle('expanded')">Smart Watches Full Touch Screen - Business Gold Steelbelt.</p>
+        <button class="add-to-cart" data-name="2.09 Smart watch" data-price="65000">Add to Cart</button>
+      </div>
+
+      <div class="product-card">
+        <img src="images/bud3.jpg" alt="Cute cat headphones">
+        <h3>Cute cat headphones</h3>
+        <span>UGX 45,000</span>
+      <p class="short-desc" onclick="this.classList.toggle('expanded')">Cute Cat Ear Bluetooth 5.0 Wireless LED Earphones With Microphone Noise Cancelling Stereo Music Foldable Earphones.</p>
+        <button class="add-to-cart" data-name="Cute cat headphones" data-price="45000">Add to Cart</button>
+      </div>
+
+      <div class="product-card">
+        <img src="images/bud5.jpg" alt="Bloggers' shooting kit">
+        <h3>Bloggers' shooting kit</h3>
+        <span>UGX 53,000</span>
+      <p class="short-desc" onclick="this.classList.toggle('expanded')">Professional Blogging Shooting Kits Mobile Phone Blog Kit with Microphone LED Light and Phone Holder for Live Broadcast.</p>
+        <button class="add-to-cart" data-name="Bloggers' shooting kit" data-price="53000">Add to Cart</button>
+      </div>
+
+     <div class="product-card">
+        <img src="images/bud1.jpg" alt="Extreme Bass Wireless">
+        <h3> Wireless Bluetooth Headphones.</h3>
+        <span>UGX 40,000</span>
+      <p class="short-desc" onclick="this.classList.toggle('expanded')">Bass Wireless Bluetooth Headphones Over The Ear - Blue/Black/Red.</p>
+        <button class="add-to-cart" data-name="Extreme Bass" data-price="40000">Add to Cart</button>
+      </div>
+
+     <div class="product-card">
+        <img src="images/bud6.jpg" alt="Extreme Bass headphones">
+        <h3>Extreme Bass headphones</h3>
+        <span>UGX 27,000</span>
+      <p class="short-desc" onclick="this.classList.toggle('expanded')">Extreme Bass Wireless Bluetooth Headphones Over the Ear -Multicolor.</p>
+        <button class="add-to-cart" data-name="Extreme Bass headphones" data-price="27000">Add to Cart</button>
+      </div>
+
+     <div class="product-card">
+        <img src="images/bud7.jpg" alt="Wireless Headpones">
+        <h3>Wireless Bass Headpones</h3>
+        <span>UGX 60,000</span>
+      <p class="short-desc" onclick="this.classList.toggle('expanded')">Bluetooth Wireless Bass Headpones With FM And Memory Card Slot - Multi Color</p>
+        <button class="add-to-cart" data-name="Wireless Bass Headpones" data-price="60000">Add to Cart</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Smart Tech Section -->
+  <section id="smarttech" class="product-section">
+    <h2>🔌 Smart Tech</h2>
+    <a href="page2.html" class="view-all-btn">View All</a>
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="images/camera3.jpg" alt="Security Camera">
+        <h3>CCTV Camera</h3>
+        <span>UGX 450,000</span>
+        <p class="short-desc" onclick="this.classList.toggle('expanded')">CCTV Kit 4 Security Cameras Plus DVR 1080p Full HD – perfect for home and business monitoring.</p>
+        <button class="add-to-cart" data-name="CCTV Camera" data-price="450000">Add to Cart</button>
+      </div>
+
+      <div class="product-card">
+        <img src="images/camera2.jpg" alt="Security Camera">
+        <h3>CCTV outdoor Camera</h3>
+        <span>UGX 90,000</span>
+        <p class="short-desc" onclick="this.classList.toggle('expanded')">Dummy Camera Security CCTV Outdoor Waterproof Emulational Decoy IR LED Flash Red Dummy Camera – perfect for business monitoring.</p>
+        <button class="add-to-cart" data-name="CCTV outdoor Camera" data-price="90000">Add to Cart</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- TVs Section -->
+  <section id="tv" class="product-section">
+    <h2>📺 Flat TVs</h2>
+    <a href="page2.html" class="view-all-btn">View All</a>
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="images/tv9.jpg" alt="19" Digital TV">
+        <h3>19" Digital TV</h3>
+        <span>UGX 230,000</span>
+        <p class="short-desc" onclick="this.classList.toggle('expanded')">Saachi 19"​ Digital TV goes beyond just watching TV with its smart function feature of surfing the internet, video chat Skype, watch videos and much more</p>
+        <button class="add-to-cart" data-name="19" Digital TV" data-price="230000">Add to Cart</button>
+      </div>
+
+      <div class="product-card">
+        <img src="images/tv8.jpg" alt="22" Digital TV">
+        <h3>22" TV With Inbuilt Free To Air Decoder</h3>
+        <span>UGX 277,000</span>
+        <p class="short-desc" onclick="this.classList.toggle('expanded')">Experience a whole new level of entertainment on this 22 Inch HD LED TV. See your favourite films and music come to life with our new, exquisite design.</p>
+        <button class="add-to-cart" data-name="22" Digital TV" data-price="277000">Add to Cart</button>
+      </div>
+
+        <div class="product-card">
+        <img src="images/tv1.jpg" alt="32" Digital TV">
+        <h3>Smartec 32" Free To Air TV</h3>
+        <span>UGX 330,000</span>
+        <p class="short-desc" onclick="this.classList.toggle('expanded')">Specifications
+Screen Size: 32 inch
+Screen Type: LED
+Screen Resolution: 1920 x 1080 Pixels
+Connectivity: Headphone Jack , USB , HDMI 
+Digital Receiver LED TV.</p>
+        <button class="add-to-cart" data-name="Smartec 32" Free To Air TV" data-price="330000">Add to Cart</button>
+      </div>  
+
+        <div class="product-card">
+        <img src="images/tv4.jpg" alt="24" Digital TV">
+        <h3>Globalstar 24" Digital LED TV</h3>
+        <span>UGX 288,000</span>
+        <p class="short-desc" onclick="this.classList.toggle('expanded')">Luminous ClarityEnjoy its luminous clarity that eliminates blur and artifacts which give you fast motion quality picture for you to enjoy your favorite programs.</p>
+        <button class="add-to-cart" data-name="Globalstar 24" Digital LED TV" data-price="288000">Add to Cart</button>
+      </div>  
+
+    </div>
+  </section>
+
+  <!-- Kitchen Section -->
+  <section id="kitchen" class="product-section">
+    <h2>🍳 Kitchen & Home Essentials</h2>
+    <a href="page2.html" class="view-all-btn">View All</a>
+    <div class="product-grid">
+        <div class="product-card">
+        <img src="images/blend1.jpg" alt="blender">
+        <h3>Rechargable Blender</h3>
+        <span>UGX 40,000</span>
+        <p class="short-desc" onclick="this.classList.toggle('expanded')">Mini Portable Rechargeable Blender – reliable performance.</p>
+        <button class="add-to-cart" data-name="Rechargable Blender" data-price="40000">Add to Cart</button>
+      </div>  
+        <div class="product-card">
+        <img src="images/blend2.jpg" alt="blender">
+        <h3>Electric Fruit Blender</h3>
+        <span>UGX 58,000</span>
+        <p class="short-desc" onclick="this.classList.toggle('expanded')">Mini USB Portable Electric Fruit Blender - green/pink/purple.</p>
+        <button class="add-to-cart" data-name="Electric Fruit Blender" Digital LED TV" data-price="58000">Add to Cart</button>
+      </div>  
+
+          <div class="product-card">
+        <img src="images/blend3.jpg" alt="blender">
+        <h3>Saachi 2 In 1 Blender</h3>
+        <span>UGX 108,000</span>
+        <p class="short-desc" onclick="this.classList.toggle('expanded')">Saachi 2 In 1 Blender / Grinder 1.5 Litres NL-BL-4405 - Black – perfect for home or business.</p>
+        <button class="add-to-cart" data-name="Saachi 2 In 1 Blender" Digital LED TV" data-price="108000">Add to Cart</button>
+      </div>  
+
+        <div class="product-card">
+        <img src="images/blend4.jpg" alt="Sonifer Blender">
+        <h3>Sonifer Blender</h3>
+        <span>UGX 180,000</span>
+        <p class="short-desc" onclick="this.classList.toggle('expanded')">versatile and high-performance kitchen appliance designed to make blending, pureeing, and mixing tasks effortless..</p>
+        <button class="add-to-cart" data-name="Sonifer Blender" Digital LED TV" data-price="180000">Add to Cart</button>
+      </div>  
+
+        <div class="product-card">
+        <img src="images/blend6.jpg" alt="electric kettle">
+        <h3>Hoffmans 2.5Ltrs Electric Kettle</h3>
+        <span>UGX 58,000</span>
+        <p class="short-desc" onclick="this.classList.toggle('expanded')">Kettle For Boiling Water Stainless Steel Double Wall Hot Water Boiler With Automatic Shut Off & Boil-Dry Protection - Color May Vary– perfect for home.</p>
+        <button class="add-to-cart" data-name="Hoffmans 2.5Ltrs Electric Kettle" Digital LED TV" data-price="58000">Add to Cart</button>
+      </div>  
+
+        <div class="product-card">
+        <img src="images/blend13.jpg" alt="Flat iron">
+        <h3>Sokany Steam Flat Iron</h3>
+        <span>UGX 99,000</span>
+        <p class="short-desc" onclick="this.classList.toggle('expanded')">Reach the maximum temperature in less than a minute, much faster than a conventional iron.</p>
+        <button class="add-to-cart" data-name="Sokany Steam Flat Iron" Digital LED TV" data-price="99000">Add to Cart</button>
+      </div>  
+
+  </section>
+
+<section id="blog" class="blog-carousel">
+ <h2> Latest from our blog</h2>
+  <div class="blog-track" id="blogTrack">
+   <div class="blog-card">
+  <h3>Top Accessories for Daily Use</h3>
+  <p class="blog-desc">
+    Explore the best-selling power banks, chargers, and cables for your devices. These are must-haves for every smartphone user today.
+  </p>
+  <a href="javascript:void(0);" class="read-more-btn">Read More</a>
+</div>
+<div class="blog-card">
+  <h3>Top Accessories for Daily Use</h3>
+  <p class="blog-desc">
+    Explore the best-selling power banks, chargers, and cables for your devices. These are must-haves for every smartphone user today.
+  </p>
+  <a href="javascript:void(0);" class="read-more-btn">Read More</a>
+</div>
+<div class="blog-card">
+  <h3>Top Accessories for Daily Use</h3>
+  <p class="blog-desc">
+    Explore the best-selling power banks, chargers, and cables for your devices. These are must-haves for every smartphone user today.
+  </p>
+  <a href="javascript:void(0);" class="read-more-btn">Read More</a>
+</div>
+
+<div class="blog-card">
+  <h3>Top Accessories for Daily Use</h3>
+  <p class="blog-desc">
+    Explore the best-selling power banks, chargers, and cables for your devices. These are must-haves for every smartphone user today.
+  </p>
+  <a href="javascript:void(0);" class="read-more-btn">Read More</a>
+</div>
+<div class="blog-card">
+  <h3>Top Accessories for Daily Use</h3>
+  <p class="blog-desc">
+    Explore the best-selling power banks, chargers, and cables for your devices. These are must-haves for every smartphone user today.
+  </p>
+  <a href="javascript:void(0);" class="read-more-btn">Read More</a>
+</div>
+<div class="blog-card">
+  <h3>Top Accessories for Daily Use</h3>
+  <p class="blog-desc">
+    Explore the best-selling power banks, chargers, and cables for your devices. These are must-haves for every smartphone user today.
+  </p>
+  <a href="javascript:void(0);" class="read-more-btn">Read More</a>
+</div>
+<div class="blog-card">
+  <h3>Top Accessories for Daily Use</h3>
+  <p class="blog-desc">
+    Explore the best-selling power banks, chargers, and cables for your devices. These are must-haves for every smartphone user today.
+  </p>
+  <a href="javascript:void(0);" class="read-more-btn">Read More</a>
+</div>
+<div class="blog-card">
+  <h3>Top Accessories for Daily Use</h3>
+  <p class="blog-desc">
+    Explore the best-selling power banks, chargers, and cables for your devices. These are must-haves for every smartphone user today.
+  </p>
+  <a href="javascript:void(0);" class="read-more-btn">Read More</a>
+</div>
+<div class="blog-card">
+  <h3>Top Accessories for Daily Use</h3>
+  <p class="blog-desc">
+    Explore the best-selling power banks, chargers, and cables for your devices. These are must-haves for every smartphone user today.
+  </p>
+  <a href="javascript:void(0);" class="read-more-btn">Read More</a>
+</div>
+<div class="blog-card">
+  <h3>Top Accessories for Daily Use</h3>
+  <p class="blog-desc">
+    Explore the best-selling power banks, chargers, and cables for your devices. These are must-haves for every smartphone user today.
+  </p>
+  <a href="javascript:void(0);" class="read-more-btn">Read More</a>
+</div>
+
+<div class="blog-card">
+  <h3>Top Accessories for Daily Use</h3>
+  <p class="blog-desc">
+    Explore the best-selling power banks, chargers, and cables for your devices. These are must-haves for every smartphone user today.
+  </p>
+  <a href="javascript:void(0);" class="read-more-btn">Read More</a>
+</div>
+
+<div class="blog-card">
+  <h3>Top Accessories for Daily Use</h3>
+  <p class="blog-desc">
+    Explore the best-selling power banks, chargers, and cables for your devices. These are must-haves for every smartphone user today.
+  </p>
+  <a href="javascript:void(0);" class="read-more-btn">Read More</a>
+</div>
+<div class="blog-card">
+  <h3>Top Accessories for Daily Use</h3>
+  <p class="blog-desc">
+    Explore the best-selling power banks, chargers, and cables for your devices. These are must-haves for every smartphone user today.
+  </p>
+  <a href="javascript:void(0);" class="read-more-btn">Read More</a>
+</div>
+<div class="blog-card">
+  <h3>Top Accessories for Daily Use</h3>
+  <p class="blog-desc">
+    Explore the best-selling power banks, chargers, and cables for your devices. These are must-haves for every smartphone user today.
+  </p>
+  <a href="javascript:void(0);" class="read-more-btn">Read More</a>
+</div>
+<div class="blog-card">
+  <h3>Top Accessories for Daily Use</h3>
+  <p class="blog-desc">
+    Explore the best-selling power banks, chargers, and cables for your devices. These are must-haves for every smartphone user today.
+  </p>
+  <a href="javascript:void(0);" class="read-more-btn">Read More</a>
+</div>
+<div class="blog-card">
+  <h3>Top Accessories for Daily Use</h3>
+  <p class="blog-desc">
+    Explore the best-selling power banks, chargers, and cables for your devices. These are must-haves for every smartphone user today.
+  </p>
+  <a href="javascript:void(0);" class="read-more-btn">Read More</a>
+</div>
+
+<div class="blog-card">
+  <h3>Top Accessories for Daily Use</h3>
+  <p class="blog-desc">
+    Explore the best-selling power banks, chargers, and cables for your devices. These are must-haves for every smartphone user today.
+  </p>
+  <a href="javascript:void(0);" class="read-more-btn">Read More</a>
+</div>
+
+<div class="blog-card">
+  <h3>Top Accessories for Daily Use</h3>
+  <p class="blog-desc">
+    Explore the best-selling power banks, chargers, and cables for your devices. These are must-haves for every smartphone user today.
+  </p>
+  <a href="javascript:void(0);" class="read-more-btn">Read More</a>
+</div>
+
+<div class="blog-card">
+  <h3>Top Accessories for Daily Use</h3>
+  <p class="blog-desc">
+    Explore the best-selling power banks, chargers, and cables for your devices. These are must-haves for every smartphone user today.
+  </p>
+  <a href="javascript:void(0);" class="read-more-btn">Read More</a>
+</div>
+
+<div class="blog-card">
+  <h3>Top Accessories for Daily Use</h3>
+  <p class="blog-desc">
+    Explore the best-selling power banks, chargers, and cables for your devices. These are must-haves for every smartphone user today.
+  </p>
+  <a href="javascript:void(0);" class="read-more-btn">Read More</a>
+</div>
+
+  </div>
+</section>
+
+
+
+<!-- Footer -->
+<footer>
+  <p>&copy; 2025 Prime Stores Uganda. All rights reserved.</p>
+  <nav class="footer-links">
+    <a href="about us.html">About Us</a> |
+    <a href="privacy policy.html">Privacy Policy</a> |
+    <a href="contact us.html">Contact Us</a>
+  </nav>
+</footer>
+
+<!-- Welcome Popup -->
+<div class="popup" id="welcomePopup">
+  <div class="popup-content">
+    Welcome to Prime <br>Stores Uganda!
+    <span class="close-popup" onclick="closePopup('welcomePopup')">&times;</span>
+  </div>
+</div>
+
+<!-- Discount Popup -->
+<div class="popup popup-discount" id="discountPopup">
+  <div class="popup-content">
+    🎉 Limited Time Offer:<br> Get 10% Off All Orders This Week!
+    <span class="close-popup" onclick="closePopup('discountPopup')">&times;</span>
+  </div>
+</div>
+
+<!-- Toast Container -->
+<div id="toast" style="
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: green;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  display: none;
+  z-index: 9999;
+  font-weight: bold;
+">
+  Product added to cart!
+</div>
+<!-- Sticky WhatsApp Chat Button -->
+<a href="https://wa.me/256789599920" class="whatsapp-sticky" target="_blank" title="Chat with us on WhatsApp">
+  💬 Chat
+</a>
+
+<div id="newsletterModal" class="newsletter-modal">
+  <div class="newsletter-content">
+    <span class="close-newsletter">&times;</span>
+    <h2>📬 Join Our Newsletter</h2>
+    <p>Be the first to know about new deals, gadgets, and discounts!</p>
+    <input type="email" id="newsletterEmail" placeholder="Enter your email" required />
+    <button id="subscribeBtn">Subscribe</button>
+  </div>
+</div>
+
+<!-- Your scripts should be just above this or right below it -->
+<script>
+  const track = document.getElementById('blogTrack');
+  const cards = document.querySelectorAll('.blog-card');
+  const cardWidth = cards[0].offsetWidth + 16; // card width + margin
+  let index = 0;
+
+  // Clone first few cards to the end for seamless looping
+  for (let i = 0; i < 5; i++) {
+    track.appendChild(cards[i].cloneNode(true));
+  }
+
+  setInterval(() => {
+    index++;
+    track.style.transition = 'transform 0.8s ease-in-out';
+    track.style.transform = `translateX(-${index * cardWidth}px)`;
+
+    // Reset loop without flicker
+    if (index >= cards.length) {
+      setTimeout(() => {
+        track.style.transition = 'none';
+        track.style.transform = 'translateX(0)';
+        index = 0;
+      }, 850); // must match transition duration
+    }
+  }, 3000); // every 3 seconds
+
+   const readMoreBtns = document.querySelectorAll('.read-more-btn');
+
+  readMoreBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const card = btn.closest('.blog-card');
+      card.classList.toggle('expanded');
+      btn.textContent = card.classList.contains('expanded') ? 'Read Less' : 'Read More';
+    });
+  });
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const products = [
+      { name: "Samsung Galaxy A13", price: 550000 },
+      { name: "Oraimo Power Bank 10000mAh", price: 45000 },
+      { name: "Tecno Camon 20 Pro", price: 780000 },
+      { name: "Bluetooth Headphones", price: 90000 },
+      { name: "Smart LED TV 32 Inch", price: 650000 }
+    ];
+
+    const input = document.getElementById("liveSearchInput");
+    const resultsBox = document.getElementById("searchResults");
+
+    input.addEventListener("input", () => {
+      const value = input.value.toLowerCase();
+      resultsBox.innerHTML = "";
+      if (!value) {
+        resultsBox.style.display = "none";
+        return;
+      }
+
+      const filtered = products.filter(p => p.name.toLowerCase().includes(value));
+
+      if (filtered.length === 0) {
+        resultsBox.innerHTML = "<div>No results found</div>";
+      } else {
+        filtered.forEach(item => {
+          const div = document.createElement("div");
+          div.textContent = `${item.name} - UGX ${item.price.toLocaleString()}`;
+          div.onclick = () => {
+            alert(`Viewing: ${item.name}`);
+          };
+          resultsBox.appendChild(div);
+        });
+      }
+
+      resultsBox.style.display = "block";
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!document.querySelector(".live-search-container").contains(e.target)) {
+        resultsBox.style.display = "none";
+      }
+    });
+  });
+</script>
+
+
+</body>
+</html>
+

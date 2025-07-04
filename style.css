@@ -1,0 +1,945 @@
+/* General Styling */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f5f7fa;
+}
+/* Prevent horizontal scrolling */
+body {
+  overflow-x: hidden;
+}
+
+/* Optional: Also ensure html doesn't allow it */
+html {
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Header */
+.site-header {
+  background-color: orange;
+  padding: 1rem 0;
+  color: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.logo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: white;
+  padding: 4px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+.site-title h1 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.site-title p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.whatsapp-button {
+  background-color: #1e88e5;
+  color: white;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  .site-title h1 {
+    font-size: 1.4rem;
+  }
+
+  .site-title p {
+    font-size: 0.9rem;
+  }
+
+  .whatsapp-button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+    width: 90%;
+    max-width: 250px;
+    margin-top: 0.5rem;
+  }
+
+  .logo {
+    width: 50px;
+    height: 50px;
+  }
+
+  .live-search-container {
+    width: 100%;
+    padding: 0 1rem;
+    margin-top: 0.5rem;
+  }
+
+  #liveSearchInput {
+    width: 100%;
+    padding: 0.6rem;
+    font-size: 1rem;
+  }
+}
+
+
+/* Navigation */
+.main-nav ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background-color: #1e88e5;
+  overflow-x: auto;
+}
+
+.main-nav li {
+  margin: 0;
+}
+
+.main-nav a {
+  display: block;
+  padding: 1rem;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.main-nav a:hover {
+  background-color: #0d47a1;
+}
+
+/* Product Sections */
+.product-section {
+  padding: 2rem 1rem;
+}
+
+.short-desc {
+  font-size: 0.9rem;
+  color: #444;
+  max-height: 40px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer; /* makes it feel clickable */
+  transition: max-height 0.3s ease;
+}
+
+.short-desc.expanded {
+  white-space: normal;
+  max-height: 300px; /* adjust as needed */
+  overflow: visible;
+}
+
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.product-card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  padding: 1rem;
+  text-align: center;
+  position: relative;
+}
+
+.product-card img {
+  width: 100%;
+  max-height: 160px;
+  object-fit: contain;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+
+.product-card h3 {
+  font-size: 1.1rem;
+  margin: 0.5rem 0;
+}
+
+.section-header, .product-card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+
+.product-card span {
+  color: orange;
+  font-weight: bold;
+}
+
+.short-desc {
+  font-size: 0.9rem;
+  color: #444;
+  max-height: 40px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer; /* makes it look clickable */
+  transition: all 0.3s ease;
+}
+
+.short-desc.expanded {
+  white-space: normal;
+  max-height: 500px; /* allows full view */
+  overflow: visible;
+}
+
+
+.product-card a {
+  display: inline-block;
+  margin-top: 0.5rem;
+  background-color: #1e88e5;
+  color: white;
+  padding: 0.4rem 1rem;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+
+/* On small screens — reinforce it if it’s being overridden */
+@media screen and (max-width: 768px) {
+  .add-to-cart {
+    background-color: #4caf50;
+    color: white;
+  }
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+}
+
+
+.blog-section {
+  background-color: #fff3e0;
+  padding: 2rem 1rem;
+}
+
+.blog-carousel {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.blog-track {
+  display: flex;
+  gap: 1rem;
+  animation: slideBlog 60s linear infinite;
+}
+
+.blog-card {
+  flex: 0 0 250px;
+  max-width: 90vw;
+  box-sizing: border-box;
+  margin-right: 1rem;
+  background: orange;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+
+/* Responsive fix */
+@media (max-width: 600px) {
+  .blog-card {
+    flex: 0 0 100%;
+    max-width: 100%;
+    min-width: 100%;
+    margin-right: 1rem;
+  }
+ .blog-track {
+    gap: 1rem; /* optional spacing between cards */
+  }
+}
+
+.blog-desc {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: max-height 0.3s ease;
+}
+
+.blog-card.expanded .blog-desc {
+  -webkit-line-clamp: unset;
+  overflow: visible;
+}
+
+.blog-card:hover {
+  transform: scale(1.02);
+}
+
+/* Footer */
+footer {
+  background-color: #1e88e5;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+/* Footer Links */
+.footer-links {
+  margin-top: 0.5rem;
+}
+
+.footer-links a {
+  color: orange;
+  text-decoration: none;
+  margin: 0 8px;
+  font-weight: 500;
+}
+
+.footer-links a:hover {
+  color: #ffd700; /* lighter orange on hover */
+}
+
+/* Expand description toggle */
+.product-card .expand-toggle {
+  font-size: 0.85rem;
+  color: #1e88e5;
+  cursor: pointer;
+  display: block;
+  margin-top: 0.2rem;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 10px;
+}
+
+.view-all-btn {
+  background-color: orange;
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: background 0.3s ease;
+}
+
+.view-all-btn:hover {
+  background-color: darkorange;
+}
+
+
+/* Base styles already in your code — keeping them */
+
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 768px) {
+  .cart-container {
+    margin: 20px 10px;
+    padding: 15px;
+  }
+
+  .site-header,
+  .header-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .site-title h1 {
+    font-size: 1.4rem;
+  }
+
+  .site-title p {
+    font-size: 1rem;
+  }
+
+  .logo {
+    max-width: 120px;
+    margin-bottom: 10px;
+  }
+
+  .whatsapp-button {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    padding: 8px 12px;
+  }
+
+  .main-nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0;
+    margin: 10px 0;
+    list-style: none;
+  }
+
+  .main-nav li {
+    margin: 5px 10px;
+  }
+
+  .main-nav a {
+    font-size: 0.95rem;
+    color: #ff6600;
+    text-decoration: none;
+  }
+
+  .cart-item {
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 0.95rem;
+  }
+
+  .cart-item button {
+    margin-top: 8px;
+    padding: 6px 10px;
+    font-size: 0.9rem;
+  }
+
+  .checkout-form input,
+  .checkout-form textarea {
+    font-size: 1rem;
+  }
+
+  .whatsapp-order {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .site-title h1 {
+    font-size: 1.2rem;
+  }
+
+  .cart-container {
+    padding: 12px;
+  }
+
+  .whatsapp-order {
+    font-size: 0.95rem;
+    padding: 10px;
+  }
+}
+.popup {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #ff6600;
+  color: white;
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  display: none;
+  animation: fadeInUp 0.4s ease forwards;
+  width: auto;
+  max-width: 280px;
+  font-size: 0.7rem;
+  line-height: 1.3;
+}
+
+.popup-content {
+  position: relative;
+}
+
+.popup .close-btn {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
+
+.popup-discount {
+  background: #e53935;
+  bottom: 90px;
+}
+
+@keyframes fadeInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ✅ Better Responsive */
+@media screen and (max-width: 500px) {
+  .popup {
+    right: 10px;
+    left: auto;
+    bottom: 20px;
+    max-width: 85vw;  /* allows margin on sides */
+    padding: 0.6rem 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  .popup-discount {
+    bottom: 80px;
+  }
+
+  .close-popup {
+    font-size: 0.9rem;
+  }
+}
+
+.whatsapp-sticky {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background-color: #25D366;
+  color: white;
+  font-weight: bold;
+  padding: 12px 16px;
+  border-radius: 30px;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  z-index: 1000;
+  transition: background 0.3s ease;
+}
+
+.whatsapp-sticky:hover {
+  background-color: #128C7E;
+}
+
+/* Responsive for small screens */
+@media (max-width: 500px) {
+  .whatsapp-sticky {
+    font-size: 0.85rem;
+    padding: 8px 12px;
+    border-radius: 20px;
+    bottom: 15px;
+    left: 10px;
+    max-width: 80%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.live-search-container {
+  position: relative;
+  max-width: 400px;
+  margin: 20px auto;
+}
+
+#liveSearchInput {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.search-results {
+  position: absolute;
+  background: white;
+  border: 1px solid #ddd;
+  border-top: none;
+  max-height: 250px;
+  overflow-y: auto;
+  width: 100%;
+  z-index: 1000;
+  display: none;
+}
+
+.search-results div {
+  padding: 10px;
+  color: orange; /* 👈 Add this line */
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+}
+
+.search-results div:hover {
+  background-color: #f2f2f2;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  .live-search-container {
+    max-width: 95%;
+  }
+}
+
+.newsletter-modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  z-index: 10000;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.newsletter-modal.show {
+  display: flex;
+  opacity: 1;
+}
+
+
+
+.newsletter-content {
+  background: white;
+  padding: 20px  25px;
+  max-width: 250px;
+  width: 90%;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  position: relative;
+}
+
+.newsletter-content h2 {
+  color: #ff6600;
+  margin-bottom: 10px;
+}
+
+.newsletter-content input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.newsletter-content button {
+  background: #ff6600;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  margin-top: 12px;
+  cursor: pointer;
+}
+
+.newsletter-content button:hover {
+  background: #e65c00;
+}
+
+.close-newsletter {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #666;
+}
+.newsletter-modal {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.newsletter-modal.show {
+  display: flex;
+  visibility: visible;
+  opacity: 1;
+}
+/* Mobile adjustments */
+@media (max-width: 600px) {
+  .newsletter-content {
+    width: 90%;
+    padding: 15px 20px;
+    margin: 20% auto;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* General Styling */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f5f7fa;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Header */
+.site-header {
+  background-color: orange;
+  padding: 1rem 0;
+  color: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.logo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: white;
+  padding: 4px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+.site-title h1 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.site-title p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.whatsapp-button {
+  background-color: #1e88e5;
+  color: white;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+/* Navigation */
+.main-nav ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background-color: #1e88e5;
+  overflow-x: auto;
+}
+
+.main-nav li {
+  margin: 0;
+}
+
+.main-nav a {
+  display: block;
+  padding: 1rem;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.main-nav a:hover {
+  background-color: #0d47a1;
+}
+
+/* Product Grid Styling */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Always 4 per row */
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+
+/* Product Card */
+
+  .product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+
+.product-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  padding: 0.6rem;
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.product-card:hover {
+  transform: translateY(-3px);
+}
+
+.product-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: contain; /* ensures full image is visible without distortion */
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+/* Product Info */
+.product-card h3 {
+  font-size: 0.95rem;
+  margin: 0.4rem 0 0.2rem;
+  color: #333;
+}
+
+.product-card span {
+  color: orange;
+  font-size: 0.9rem;
+  font-weight: bold;
+  display: block;
+  margin: 0.2rem 0;
+}
+
+/* Button */
+.product-card button {
+  background-color: #1e88e5;
+  color: white;
+  border: none;
+  padding: 0.4rem 0.7rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.product-card button:hover {
+  background-color: #0d47a1;
+}
+
+/* Blog Section */
+.blog-section {
+  background-color: #fff3e0;
+  padding: 2rem 1rem;
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.blog-card {
+  background: white;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.blog-card h3 {
+  font-size: 1.2rem;
+}
+
+.blog-card p {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.blog-card a {
+  display: inline-block;
+  margin-top: 0.5rem;
+  color: #1e88e5;
+  font-weight: bold;
+  text-decoration: none;
+}
+  
+
+/* Footer */
+footer {
+  background-color: #1e88e5;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+/* Footer Links */
+.footer-links {
+  margin-top: 0.5rem;
+}
+
+.footer-links a {
+  color: orange;
+  text-decoration: none;
+  margin: 0 8px;
+  font-weight: 500;
+}
+
+.footer-links a:hover {
+  color: #ffd700; /* lighter orange on hover */
+}
+
+
+
